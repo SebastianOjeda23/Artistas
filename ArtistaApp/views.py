@@ -35,5 +35,5 @@ def actualizarArtista(request,id):
 def eliminarArtista(request,id):
     artistas = Artista.objects.get(id = id)
     artistas.delete()
-    return redirect('/lista')
+    return redirect('../lista')
 # Create your views here.
