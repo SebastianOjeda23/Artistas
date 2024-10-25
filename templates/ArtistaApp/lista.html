@@ -1,39 +1,44 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lista de Artistas</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <div>Lista de artistas</div>
+    <div class="title">Lista de Artistas</div>
     {% if artistas %}
     <table>
         <thead>
             <tr>
-                <th>nombre</th>
-                <th>nacionalidad</th>
-                <th>fecha nacimiento</th>
-                <th>canciones creadas</th>
-                <th>años activos</th>
+                <th>Nombre</th>
+                <th>Nacionalidad</th>
+                <th>Fecha Nacimiento</th>
+                <th>Canciones Creadas</th>
+                <th>Años Activos</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             {% for artista in artistas %}
             <tr>
-                <td>{{ artista.nombre_artista}}</td>
-                <td>{{ artista.nacionalidad}}</td>
+                <td>{{ artista.nombre_artista }}</td>
+                <td>{{ artista.nacionalidad }}</td>
                 <td>{{ artista.fechanacimiento }}</td>
-                <td>{{ artista.cancionescreada}}</td>
-                <td>{{ artista.aniosactivo}}</td>
-                <td><a href="../eliminarArtista/{{artista.id}}">Eliminar</a></td>
-                <td><a href="../actualizarArtista/{{artista.id}}">Actualizar</a></td>
+                <td>{{ artista.cancionescreada }}</td>
+                <td>{{ artista.aniosactivo }}</td>
+                <td>
+                    <a href="../eliminarArtista/{{artista.id}}" class="btn delete">Eliminar</a>
+                    <a href="../actualizarArtista/{{artista.id}}" class="btn update">Actualizar</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
     {% else %}
-    <div>
+    <div class="no-artists">
         <strong>No se encontraron artistas</strong>
     </div>
     {% endif %}
