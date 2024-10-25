@@ -16,9 +16,13 @@ def registrarArtista(request):
         form = FormArtista(request.POST)
         if form.is_valid():
             form.save()
-        return index(request)
-    data = {'form': form}
-    return render(request,'ArtistaApp/registrar.html',data)
+            return redirect('../')
+        else:
+            data = {'form': form}
+            return render(request, 'ArtistaApp/registrar.html', data)
+    else:
+        data = {'form': form}
+        return render(request, 'ArtistaApp/registrar.html', data)
 
 def actualizarArtista(request,id):
     artistas = Artista.objects.get(id = id)
