@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>Lista de artistas</div>
+    {% if artistas %}
+    <table>
+        <thead>
+            <tr>
+                <th>nombre</th>
+                <th>nacionalidad</th>
+                <th>fecha nacimiento</th>
+                <th>canciones creadas</th>
+                <th>años activos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for artista in artistas %}
+            <tr>
+                <td>{{ artista.nombre_artista}}</td>
+                <td>{{ artista.nacionalidad}}</td>
+                <td>{{ artista.fechanacimiento }}</td>
+                <td>{{ artista.cancionescreada}}</td>
+                <td>{{ artista.aniosactivo}}</td>
+                <td><a href="../eliminarArtista/{{artista.id}}">Eliminar</a></td>
+                <td><a href="../actualizarArtista/{{artista.id}}">Actualizar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div>
+        <strong>No se encontraron artistas</strong>
+    </div>
+    {% endif %}
+</body>
+</html>
